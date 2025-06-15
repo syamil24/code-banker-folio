@@ -25,9 +25,11 @@ import {
   Code2,
   Smartphone,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Github
 } from "lucide-react";
 import { useState } from "react";
+import useEmblaCarousel from 'embla-carousel-react';
 
 const Index = () => {
   const [expandedExperiences, setExpandedExperiences] = useState<{[key: number]: boolean}>({});
@@ -154,7 +156,12 @@ const Index = () => {
         "Admin dashboard",
         "Real-time inventory updates"
       ],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=300&fit=crop"
+      ],
       status: "Completed",
       year: "2023"
     },
@@ -172,7 +179,11 @@ const Index = () => {
         "Mobile-first design",
         "Fast loading performance"
       ],
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=500&h=300&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=300&fit=crop"
+      ],
       status: "Completed",
       year: "2023"
     }
@@ -184,7 +195,36 @@ const Index = () => {
     phone: "+1 (555) 123-4567",
     location: "New York, NY",
     whatsapp: "+1 (555) 123-4567",
-    instagram: "@johndoe_dev"
+    instagram: "@johndoe_dev",
+    github: "johndoe-dev"
+  };
+
+  const ProjectImageCarousel = ({ images, title }: { images: string[]; title: string }) => {
+    const [emblaRef] = useEmblaCarousel({ 
+      loop: true,
+      align: 'start',
+    });
+
+    return (
+      <div className="embla relative overflow-hidden" ref={emblaRef}>
+        <div className="embla__container flex">
+          {images.map((image, index) => (
+            <div key={index} className="embla__slide flex-[0_0_100%] min-w-0">
+              <img 
+                src={image} 
+                alt={`${title} screenshot ${index + 1}`}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+          {images.map((_, index) => (
+            <div key={index} className="w-2 h-2 rounded-full bg-white/50 backdrop-blur-sm"></div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -204,6 +244,15 @@ const Index = () => {
                   <User className="w-4 h-4" />
                   <span className="text-sm font-medium">John Doe</span>
                 </div>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="inline-flex items-center gap-2 bg-gray-800/50 border-gray-600 text-gray-100 hover:bg-gray-700/50"
+                  onClick={() => window.open(`https://github.com/${contactInfo.github}`, '_blank')}
+                >
+                  <Github className="w-4 h-4" />
+                  <span className="text-sm font-medium">@{contactInfo.github}</span>
+                </Button>
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Building the Future of
@@ -390,12 +439,8 @@ const Index = () => {
                   <CarouselItem key={index}>
                     <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div className="relative overflow-hidden">
-                          <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                          />
+                        <div className="relative overflow-hidden h-80 lg:h-auto">
+                          <ProjectImageCarousel images={project.images} title={project.title} />
                           <div className="absolute top-4 left-4">
                             <Badge className="bg-green-600 text-white">
                               <Smartphone className="w-3 h-3 mr-1" />
