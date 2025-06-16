@@ -3,18 +3,18 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { 
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { 
-  User, 
-  Briefcase, 
-  GraduationCap, 
-  FileText, 
+import {
+  User,
+  Briefcase,
+  GraduationCap,
+  FileText,
   BookOpen,
   Mail,
   Phone,
@@ -45,99 +45,140 @@ const Index = () => {
     const words = text.split(' ');
     const wordsPerLine = 12; // Approximate words per line
     const maxWords = maxLines * wordsPerLine;
-    
+
     if (words.length <= maxWords) {
       return text;
     }
-    
+
     return words.slice(0, maxWords).join(' ') + '...';
   };
 
   const skills = [
-    { name: "JavaScript", level: 95 },
-    { name: "React", level: 90 },
+    { name: "Java", level: 95 },
+    { name: "Spring Boot", level: 90 },
     { name: "Node.js", level: 85 },
-    { name: "Python", level: 80 },
-    { name: "Java", level: 88 },
-    { name: "SQL", level: 92 },
-    { name: "MongoDB", level: 75 },
-    { name: "AWS", level: 82 },
-    { name: "Docker", level: 78 },
-    { name: "Git", level: 95 }
+    { name: "Angular", level: 80 },
+    { name: "Docker", level: 90 },
+    { name: "Git", level: 95 },
+    { name: "Github Actions", level: 85 },
+    { name: "Jenkins", level: 87 },
+    { name: "Maven", level: 90 },
+    { name: "Linux", level: 85 },
+    { name: "Bash", level: 85 },
+    { name: "Nginx", level: 80 },
+    { name: "ELK", level: 80 },
+    { name: "Keycloak", level: 80 },
+    { name: "Grafana", level: 88 },
+    { name: "Kuberenetes", level: 80 },
+    { name: "AWS", level: 80 },
+    { name: "SQL", level: 85 },
   ];
 
   const experiences = [
     {
-      title: "Senior Software Engineer",
-      company: "Corporate Banking Solutions Ltd",
-      period: "2022 - Present",
-      description: "Leading development of core banking applications, implementing microservices architecture, and mentoring junior developers. Responsible for critical payment processing systems handling millions of transactions daily. Collaborated closely with product managers and stakeholders to define technical requirements and delivery timelines. Established coding standards and best practices for the development team. Implemented automated testing frameworks that reduced bug reports by 60%. Led the migration of legacy systems to cloud-native architecture using AWS services. Conducted technical interviews and onboarded new team members. Participated in architecture review boards and technical decision-making processes.",
-      technologies: ["Java", "Spring Boot", "React", "PostgreSQL", "AWS", "Docker"]
+      title: "Software Developer (Kuala Lumpur)",
+      company: "Permodalan Nasional Berhad (PNB)",
+      period: "2024 - Present",
+      description: `• Proactively resolved Vulnerability Assessment Penetration Testing (VAPT) issues across multiple applications, including those built on Java (Spring Boot Framework)
+        and .NET platforms. Successfully addressed critical security concerns such as XSS, SQL Injection, Missing SSL Certificates, and inadequate security headers like CSP and HSTS. \n
+        • Conducted rigorous code reviews to identify and rectify code smells flagged by the security team. Implemented robust solutions to address vulnerabilities, including SQL
+        injection risks, deadlock and thread starvation possibilities, and inadvertent exposure of sensitive data in logs. Proactively mitigated potential security threats such as path
+        traversal vulnerabilities, ensuring the integrity and security of the application codebase. \n
+        • Demonstrated strong collaboration skills by coordinating with users and business stakeholders to identify and address issues promptly. Achieved high customer
+        satisfaction by diligently resolving tickets and providing comprehensive feedback on fixes. Utilized a combination of code changes, SQL Server data patching, and Java log
+        analysis to effectively troubleshoot and resolve reported bugs \n
+        • Developed a commission processing system, including generating 7 different types of reports to display commission entitlements. Designed and implemented complex
+        business logic to handle complex reversal scenarios (e.g., multi-day or multi-month reversals) using Java Stream API. \n
+        • Implemented Keycloak as the authentication provider, seamlessly integrated it with Spring Boot and Angular, enabling user management (e.g., creating users, changing
+        passwords, and updating roles) via Spring Boot APIs, eliminating the need to directly access Keycloak for these processes. \n
+        • Implemented ELK Stack (Elasticsearch, Logstash, Kibana) to centralize and aggregate logs across multiple servers, reducing time to find and analyze logs by providing a
+        unified, real-time dashboard for easier and faster log access. \n
+        • Reduced API response times by 60% from an average of 10 seconds to 4 seconds in a Spring Boot application by streamlined business logic complexity, leading to faster
+        execution and reduced processing overhead. Enhanced SQL queries to improve efficiency, resulting in quicker data retrieval and minimized database calls, reducing
+        server load and improving overall system responsiveness. \n`,
+      technologies: ["Java", "Spring Boot", "Angular", "Jenkins", "ELK", "Keycloak", "SQL Server"]
     },
     {
-      title: "Software Engineer",
-      company: "Financial Tech Corp",
-      period: "2020 - 2022",
-      description: "Developed and maintained banking software solutions, collaborated with cross-functional teams, and improved system performance by 40%. Specialized in fraud detection algorithms and real-time transaction processing. Built RESTful APIs serving millions of requests per day with 99.9% uptime. Optimized database queries and implemented caching strategies that reduced response times by 50%. Worked on PCI DSS compliance initiatives ensuring secure handling of sensitive financial data. Mentored junior developers and conducted code reviews to maintain high code quality standards. Participated in agile development processes and sprint planning sessions.",
-      technologies: ["Python", "Django", "React", "MySQL", "Redis", "Kubernetes"]
+      title: "Software Engineer (Kuala Lumpur)",
+      company: "Maybank Berhad",
+      period: "2022 - 2023",
+      description: `• Actively contributes to the development, implementation, maintenance, and smooth operations of application systems and IT solutions, particularly focused on the mobile banking application. \n
+        • Demonstrates strong expertise in developing banking applications using Spring Boot framework with Maven as build tools, applying microservices architecture with a Backend for Frontend (BFF) design.  \m
+        • Utilizes JIRA and Confluence for streamlined development ticket tracking. \n
+        • Drives efficiency by automating Java package deployment to SIT/UAT servers through the use of GitHub Actions and Bash scripts. \n
+        • Ensures seamless user support during SIT/UAT and staging testing phases, promptly resolving any issues that arise, such as environmental challenges, connectivity hiccups, and code fixes. \n
+        • Actively participates in project change presentations to the Change Advisory Board (CAB) and produces comprehensive documentation, including signoffs and implementation plans to enable
+        smooth transitions into production releases. \n
+        • Contributes to various operational activities, including migration and deployment of source code using Bash scripts and Linux commands. Proficiently manages configurations,
+        database queries (Oracle), and deployments to production environments running on RHEL OS.  \n
+        • Plays a crucial role in Disaster Recovery (DR) activities to ensure compliance with BNM regulations. Effectively coordinates with network teams, Core Banking teams to
+        resolve any issues during downtime, ensuring the prompt resumption of services. \n
+        • Utilizes Grafana and ExpressJS, coupled with MongoDB, to develop insightful productivity dashboards. Captures metrics from attendance data, JIRA issues, and GitHub activity to visualize internal department productivity. \n
+        • Utilizes ELK Stack to resolve production issues by doing log analysis, viewing API metrics such as response time, RTT (Round Trip Time), and server resources usage such as CPU, Memory and Disks. \n `,
+      technologies: ["Java", "Spring Boot", "Github Actions", "ExpressJS", "NodeJS", "Bash", "RHEL", "Docker", "ELK", "Grafana"]
     },
     {
-      title: "Freelance Developer",
-      company: "Various Clients",
-      period: "2019 - Present",
-      description: "Delivered custom software solutions for small to medium businesses, including e-commerce platforms, mobile applications, and web applications. Managed full project lifecycle from requirements gathering to deployment. Successfully completed over 25 projects with a 100% client satisfaction rate. Specialized in React Native mobile app development and modern web technologies. Provided ongoing maintenance and support for deployed applications. Built long-term relationships with clients resulting in repeat business and referrals. Handled project management, client communication, and technical implementation independently.",
+      title: "GEES (Protege) (Kuala Lumpur)",
+      company: "Petronas Berhad",
+      period: "2021",
+      description: `• Handling servers detail using Microsoft Excel and exposed with cloud server’s implementation such as AWS and Azure. \n
+        • Experience in using PowerApps and Power Automate to create CRUD related applications. \n
+        • Basic usage of Power BI to visualize data from PowerApps and Excel. \n
+        • Conduct and host online events such as meetups and quiz sessions during department activity. \n`,
       technologies: ["React Native", "Node.js", "MongoDB", "Firebase", "Flutter"]
     }
   ];
 
   const certificates = [
     {
-      name: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      year: "2023",
-      credentialId: "AWS-SA-2023-001"
+      name: "Agile SCRUM Master",
+      issuer: "EXIN",
+      year: "2025",
+      credentialId: "6593957.20893816"
     },
     {
-      name: "Certified Java Developer",
-      issuer: "Oracle",
-      year: "2022",
-      credentialId: "OCA-Java-2022"
+      name: "Agile SCRUM Foundation",
+      issuer: "EXIN",
+      year: "2024",
+      credentialId: "6593957.20881928"
     },
     {
-      name: "React Professional Certificate",
-      issuer: "Meta",
+      name: "DecSecOps Foundation",
+      issuer: "DevOps Institute",
+      year: "2024",
+      credentialId: "GR555000255AS"
+    },
+    {
+      name: "Docker & Containers",
+      issuer: "Amigoscode",
       year: "2021",
-      credentialId: "META-REACT-2021"
+      credentialId: ""
     },
-    {
-      name: "Financial Technology Certificate",
-      issuer: "MIT Professional Education",
-      year: "2021",
-      credentialId: "MIT-FINTECH-2021"
-    }
   ];
 
   const education = [
     {
-      degree: "Bachelor of Computer Science",
-      institution: "University of Technology",
-      period: "2016 - 2020",
-      gpa: "3.8/4.0",
-      achievements: ["Dean's List", "Programming Competition Winner", "Computer Science Society President"]
+      degree: "Bachelor of Computer Science: Hons",
+      institution: "University Teknologi Mara Kampus Jasin, Melaka",
+      period: "2017 - 2021",
+      gpa: "3.59",
+      achievements: ["Participate in military training called Reserve Officer Training Unit(ROTU).",
+        "Silver award placement in i-JAMCSIIX Competition with Project titled Smart Irrigation System using Raspberry Pi.",
+        "Final Year Project: Smart Irrigation System using Raspberry Pi where integrating sensors to Raspberry Pi for data collection and use the data fo machine learning processing to determine the best timing to water the plant."]
     },
     {
-      degree: "Higher Secondary Certificate",
-      institution: "Metropolitan High School",
-      period: "2014 - 2016",
-      gpa: "A+ Grade",
-      achievements: ["Mathematics Olympiad Finalist", "Science Fair Winner"]
+      degree: "Foundation In Science",
+      institution: "University Teknologi Mara Kampus Dengkil, Selangor ",
+      period: "2016 - 2017",
+      gpa: "3.45",
+      achievements: [""]
     },
     {
-      degree: "Secondary School Certificate",
-      institution: "Central Secondary School",
-      period: "2012 - 2014",
-      gpa: "A+ Grade",
-      achievements: ["Top 5% of graduating class", "Computer Club President"]
+      degree: "Secondary SChool",
+      institution: "SMKA Sheikh Haji Mohd Said",
+      period: "2014 - 2015",
+      gpa: "10 1B",
+      achievements: ["Head of Cleanliness Prefects Unit", "Class Monitor"]
     }
   ];
 
@@ -190,17 +231,17 @@ const Index = () => {
   ];
 
   const contactInfo = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    phone: "+1 (555) 123-4567",
-    location: "New York, NY",
-    whatsapp: "+1 (555) 123-4567",
-    instagram: "@johndoe_dev",
-    github: "johndoe-dev"
+    name: "Ahmad Syamil Bin Sahrom",
+    email: "syamil2498@gmail.com",
+    phone: "+6019 629 0138",
+    location: "Kuala Lumpur, Malaysia",
+    whatsapp: "+60 (19) 629-0138",
+    instagram: "@syamil24",
+    github: "syamil24"
   };
 
   const ProjectImageCarousel = ({ images, title }: { images: string[]; title: string }) => {
-    const [emblaRef] = useEmblaCarousel({ 
+    const [emblaRef] = useEmblaCarousel({
       loop: true,
       align: 'start',
     });
@@ -210,8 +251,8 @@ const Index = () => {
         <div className="embla__container flex">
           {images.map((image, index) => (
             <div key={index} className="embla__slide flex-[0_0_100%] min-w-0">
-              <img 
-                src={image} 
+              <img
+                src={image}
                 alt={`${title} screenshot ${index + 1}`}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
@@ -242,10 +283,10 @@ const Index = () => {
                 </div>
                 <div className="inline-flex items-center gap-2 bg-indigo-800/50 px-4 py-2 rounded-full">
                   <User className="w-4 h-4" />
-                  <span className="text-sm font-medium">John Doe</span>
+                  <span className="text-sm font-medium">Ahmad Syamil</span>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   className="inline-flex items-center gap-2 bg-gray-800/50 border-gray-600 text-gray-100 hover:bg-gray-700/50"
                   onClick={() => window.open(`https://github.com/${contactInfo.github}`, '_blank')}
@@ -259,7 +300,9 @@ const Index = () => {
                 <span className="text-blue-300 block">Banking Technology</span>
               </h1>
               <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl">
-                Experienced software engineer specializing in corporate banking solutions with 4+ years of expertise in full-stack development. Passionate about creating secure, scalable applications that power financial institutions worldwide.
+                Experienced IT professional adept at supporting development, implementation, and operations of banking and investment applications, leveraging Spring Boot and microservices architecture. Skilled in providing user support, resolving issues promptly
+                during testing phases. Expertise in disaster recovery, documentation, and CAB presentations. Strong background in security, resolving VAPT issues, conducting code reviews, and ensuring application integrity. Proven track record in building,
+                maintaining, and scaling financial applications with millions of user base. Comprehensive understanding of IT infrastructure from the development to the operations end to end.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
@@ -276,7 +319,7 @@ const Index = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full blur-lg opacity-50 scale-110"></div>
                 <Avatar className="relative w-48 h-48 border-4 border-blue-300/50">
-                  <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="John Doe - Software Engineer" />
+                  <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Ahmad Syamil - Software Engineer" />
                   <AvatarFallback className="text-6xl bg-blue-600">JD</AvatarFallback>
                 </Avatar>
               </div>
@@ -291,7 +334,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Technical Skills</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Proficient in modern technologies and frameworks used in enterprise banking applications
+              Proficient in modern technologies and frameworks used in enterprise banking and financial services applications
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -303,7 +346,7 @@ const Index = () => {
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-3">{skill.name}</h3>
                   <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                    <div 
+                    <div
                       className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${skill.level}%` }}
                     ></div>
@@ -454,7 +497,7 @@ const Index = () => {
                         <div className="p-8">
                           <h3 className="text-2xl font-bold text-gray-900 mb-4">{project.title}</h3>
                           <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
-                          
+
                           <div className="mb-6">
                             <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -466,7 +509,7 @@ const Index = () => {
                               ))}
                             </ul>
                           </div>
-                          
+
                           <div className="mb-6">
                             <h4 className="font-semibold text-gray-900 mb-3">Technologies Used:</h4>
                             <div className="flex flex-wrap gap-2">
@@ -477,7 +520,7 @@ const Index = () => {
                               ))}
                             </div>
                           </div>
-                          
+
                           <Button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Project Details
@@ -573,7 +616,7 @@ const Index = () => {
                 </div>
                 <CardTitle className="text-2xl text-gray-900">{contactInfo.name}</CardTitle>
                 <CardDescription className="text-blue-600 font-medium text-lg">
-                  Software Engineer • Banking Technology Specialist
+                  Software Engineer • Your System Specialist
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-8">
@@ -587,7 +630,7 @@ const Index = () => {
                       <p className="text-gray-600">{contactInfo.email}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <Phone className="w-6 h-6 text-white" />
@@ -597,7 +640,7 @@ const Index = () => {
                       <p className="text-gray-600">{contactInfo.phone}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                       <Phone className="w-6 h-6 text-white" />
@@ -607,7 +650,7 @@ const Index = () => {
                       <p className="text-gray-600">{contactInfo.whatsapp}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
                       <MapPin className="w-6 h-6 text-white" />
@@ -617,7 +660,7 @@ const Index = () => {
                       <p className="text-gray-600">{contactInfo.location}</p>
                     </div>
                   </div>
-                  
+
                   <div className="md:col-span-2">
                     <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg hover:from-pink-100 hover:to-purple-100 transition-colors">
                       <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
@@ -632,9 +675,9 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <Separator className="my-8" />
-                
+
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Ready to start a conversation?</h3>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
