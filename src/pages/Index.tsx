@@ -4,13 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   User,
   Briefcase,
   GraduationCap,
@@ -26,19 +19,27 @@ import {
   Smartphone,
   ChevronDown,
   ChevronUp,
-  Github
+  Github,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 
 const Index = () => {
   const [expandedExperiences, setExpandedExperiences] = useState<{[key: number]: boolean}>({});
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [showAllSkills, setShowAllSkills] = useState(false);
 
   const toggleExperience = (index: number) => {
     setExpandedExperiences(prev => ({
       ...prev,
       [index]: !prev[index]
     }));
+  };
+
+  const toggleSkills = () => {
+    setShowAllSkills(prev => !prev);
   };
 
   const truncateText = (text: string, maxLines: number = 5) => {
@@ -121,7 +122,7 @@ const Index = () => {
       title: "GEES (Protege) (Kuala Lumpur)",
       company: "Petronas Berhad",
       period: "2021",
-      description: `• Handling servers detail using Microsoft Excel and exposed with cloud server’s implementation such as AWS and Azure. \n
+      description: `• Handling servers detail using Microsoft Excel and exposed with cloud server's implementation such as AWS and Azure. \n
         • Experience in using PowerApps and Power Automate to create CRUD related applications. \n
         • Basic usage of Power BI to visualize data from PowerApps and Excel. \n
         • Conduct and host online events such as meetups and quiz sessions during department activity. \n`,
@@ -134,25 +135,29 @@ const Index = () => {
       name: "Agile SCRUM Master",
       issuer: "EXIN",
       year: "2025",
-      credentialId: "6593957.20893816"
+      credentialId: "6593957.20893816",
+      downloadUrl: "https://drive.google.com/file/d/1qbr0-PZ804FqCUE6IQ8zJIhKuAbpw3UX/view?usp=sharing"
     },
     {
       name: "Agile SCRUM Foundation",
       issuer: "EXIN",
       year: "2024",
-      credentialId: "6593957.20881928"
+      credentialId: "6593957.20881928",
+      downloadUrl: "https://drive.google.com/file/d/1zHAiQytUjNLecbte-G9qEZbO3vm6EHwz/view?usp=sharing"
     },
     {
       name: "DecSecOps Foundation",
       issuer: "DevOps Institute",
       year: "2024",
-      credentialId: "GR555000255AS"
+      credentialId: "GR555000255AS",
+      downloadUrl: "https://drive.google.com/file/d/1ARtYcBc9wrtl_yyXN6P4e3AjH_eZhKQL/view?usp=sharing"
     },
     {
       name: "Docker & Containers",
       issuer: "Amigoscode",
       year: "2021",
-      credentialId: ""
+      credentialId: "",
+      downloadUrl: "https://drive.google.com/file/d/1LEwykwGLfdoLOOq2FEYG-IdPBTk_4p9n/view?usp=drive_link"
     },
   ];
 
@@ -177,16 +182,16 @@ const Index = () => {
       degree: "Secondary SChool",
       institution: "SMKA Sheikh Haji Mohd Said",
       period: "2014 - 2015",
-      gpa: "10 1B",
+      gpa: "10A 1B (SPM)",
       achievements: ["Head of Cleanliness Prefects Unit", "Class Monitor"]
     }
   ];
 
   const projects = [
     {
-      title: "ShopEase - E-commerce Mobile App",
-      description: "A full-featured e-commerce mobile application built with React Native, featuring user authentication, product catalog, shopping cart, payment integration, and order tracking. Includes admin panel for inventory management.",
-      technologies: ["React Native", "Node.js", "MongoDB", "Stripe API", "Firebase"],
+      title: "Blanco Fragrance - E-commerce Mobile App",
+      description: "A full-featured e-commerce mobile application built with Flutter, featuring user authentication, product catalog, shopping cart, payment integration, and order/shipping tracking.",
+      technologies: ["Flutter", "Supabase", "ExpressJS", "Chip Payment Gateway", "OneSignal"],
       features: [
         "User authentication & profiles",
         "Product search & filtering",
@@ -194,20 +199,24 @@ const Index = () => {
         "Secure payment processing",
         "Order tracking & history",
         "Push notifications",
-        "Admin dashboard",
+        "Promotion & Campaigns",
         "Real-time inventory updates"
       ],
       images: [
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=300&fit=crop"
+        "../public/blanco/image1.jpg",
+        "../public/blanco/image2.jpg",
+        "../public/blanco/image3.jpg",
+        "../public/blanco/image4.jpg",
+        "../public/blanco/image5.jpg",
+        "../public/blanco/image6.jpg",
+        "../public/blanco/image7.jpg",
       ],
       status: "Completed",
-      year: "2023"
+      year: "2025",
+      url: "https://play.google.com/store/apps/details?id=com.mycompany.blancoapp"
     },
     {
-      title: "DesignSpace - Interior Design Portfolio",
+      title: "NF Studio - Interior Design Portfolio",
       description: "A stunning landing page website for interior designers to showcase their portfolio and attract new clients. Features responsive design, interactive galleries, client testimonials, and contact forms with modern animations.",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite"],
       features: [
@@ -216,17 +225,19 @@ const Index = () => {
         "Client testimonials carousel",
         "Interactive contact forms",
         "Smooth scroll animations",
-        "SEO optimization",
         "Mobile-first design",
         "Fast loading performance"
       ],
       images: [
-        "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=300&fit=crop"
+        "../public/nfstudio/image1.jpg",
+        "../public/nfstudio/image2.jpg",
+        "../public/nfstudio/image3.jpg",
+        "../public/nfstudio/image4.jpg",
+        "../public/nfstudio/image5.jpg",
       ],
       status: "Completed",
-      year: "2023"
+      year: "2024",
+      url: "https://nfstudio.my"
     }
   ];
 
@@ -236,36 +247,70 @@ const Index = () => {
     phone: "+6019 629 0138",
     location: "Kuala Lumpur, Malaysia",
     whatsapp: "+60 (19) 629-0138",
+    whatsappUrl: "https://wa.me/60196290138",
     instagram: "@syamil24",
-    github: "syamil24"
+    instagramUrl: "https://instagram.com/syamil24",
+    github: "syamil24",
+    blog: "https://blog.syamilthoughts.com"
   };
 
   const ProjectImageCarousel = ({ images, title }: { images: string[]; title: string }) => {
-    const [emblaRef] = useEmblaCarousel({
+    const [emblaRef, emblaApi] = useEmblaCarousel({
       loop: true,
-      align: 'start',
+      align: 'center',
+      containScroll: 'trimSnaps',
+      dragFree: true,
     });
 
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const onSelect = useCallback(() => {
+      if (!emblaApi) return;
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    }, [emblaApi]);
+
+    useEffect(() => {
+      if (!emblaApi) return;
+      onSelect();
+      emblaApi.on('select', onSelect);
+      return () => {
+        emblaApi.off('select', onSelect);
+      };
+    }, [emblaApi, onSelect]);
+
     return (
-      <div className="embla relative overflow-hidden" ref={emblaRef}>
-        <div className="embla__container flex">
+      <div className="embla relative w-full h-full" ref={emblaRef}>
+        <div className="embla__container flex h-full">
           {images.map((image, index) => (
-            <div key={index} className="embla__slide flex-[0_0_100%] min-w-0">
+            <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
               <img
                 src={image}
                 alt={`${title} screenshot ${index + 1}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-contain bg-gray-100"
               />
             </div>
           ))}
         </div>
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
           {images.map((_, index) => (
-            <div key={index} className="w-2 h-2 rounded-full bg-white/50 backdrop-blur-sm"></div>
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === selectedIndex ? 'bg-blue-600 scale-125' : 'bg-white/50'
+              } backdrop-blur-sm`}
+            />
           ))}
         </div>
       </div>
     );
+  };
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
@@ -297,7 +342,7 @@ const Index = () => {
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Building the Future of
-                <span className="text-blue-300 block">Banking Technology</span>
+                <span className="text-blue-300 block">Financial Services</span>
               </h1>
               <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl">
                 Experienced IT professional adept at supporting development, implementation, and operations of banking and investment applications, leveraging Spring Boot and microservices architecture. Skilled in providing user support, resolving issues promptly
@@ -305,13 +350,28 @@ const Index = () => {
                 maintaining, and scaling financial applications with millions of user base. Comprehensive understanding of IT infrastructure from the development to the operations end to end.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button 
+                  size="lg" 
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  onClick={() => {
+                    document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
                   <Mail className="w-4 h-4 mr-2" />
                   Get In Touch
                 </Button>
-                <Button size="lg" variant="outline" className="border-blue-300 text-blue-100 hover:bg-blue-800">
+                <Button size="lg" variant="outline" className="border-blue-300 text-black hover:bg-blue-800" onClick={() => window.open("https://drive.google.com/file/d/12VVZpGKc04IBfXLzTOhLcWmp0Ut_372J/view?usp=sharing", '_blank')}>
                   <FileText className="w-4 h-4 mr-2" />
                   Download Resume
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-purple-300 text-black hover:bg-purple-800"
+                  onClick={() => window.open(contactInfo.blog, '_blank')}
+                >
+                  <BookOpen className="w-4 h-4 mr-2" />
+                  Visit Blog
                 </Button>
               </div>
             </div>
@@ -319,7 +379,7 @@ const Index = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full blur-lg opacity-50 scale-110"></div>
                 <Avatar className="relative w-48 h-48 border-4 border-blue-300/50">
-                  <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Ahmad Syamil - Software Engineer" />
+                  <AvatarImage src="https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg" alt="Ahmad Syamil - Software Engineer" />
                   <AvatarFallback className="text-6xl bg-blue-600">JD</AvatarFallback>
                 </Avatar>
               </div>
@@ -338,7 +398,7 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {skills.map((skill, index) => (
+            {skills.slice(0, showAllSkills ? skills.length : 5).map((skill, index) => (
               <Card key={skill.name} className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-6">
                   <div className="mb-4">
@@ -355,6 +415,26 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={toggleSkills}
+              className="text-blue-600 hover:text-blue-700 border-blue-200 hover:border-blue-300"
+            >
+              {showAllSkills ? (
+                <>
+                  <ChevronUp className="w-4 h-4 mr-2" />
+                  Show Less
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4 mr-2" />
+                  Show More Skills
+                </>
+              )}
+            </Button>
           </div>
         </div>
       </section>
@@ -393,9 +473,9 @@ const Index = () => {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 mb-4 leading-relaxed">
+                      <div className="text-gray-700 mb-4 leading-relaxed whitespace-pre-line">
                         {expandedExperiences[index] ? exp.description : truncateText(exp.description)}
-                      </p>
+                      </div>
                       {exp.description.split(' ').length > 60 && (
                         <Button
                           variant="ghost"
@@ -458,7 +538,16 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <Badge variant="secondary" className="mb-2">{cert.year}</Badge>
-                  <p className="text-sm text-gray-600">ID: {cert.credentialId}</p>
+                  <p className="text-sm text-gray-600 mb-4">ID: {cert.credentialId}</p>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full"
+                    onClick={() => window.open(cert.downloadUrl, '_blank')}
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    Download Certificate
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -475,65 +564,89 @@ const Index = () => {
               Showcasing innovative solutions and technical expertise
             </p>
           </div>
-          <div className="max-w-6xl mx-auto">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {projects.map((project, index) => (
-                  <CarouselItem key={index}>
-                    <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div className="relative overflow-hidden h-80 lg:h-auto">
-                          <ProjectImageCarousel images={project.images} title={project.title} />
-                          <div className="absolute top-4 left-4">
-                            <Badge className="bg-green-600 text-white">
-                              <Smartphone className="w-3 h-3 mr-1" />
-                              {project.status}
-                            </Badge>
-                          </div>
-                          <div className="absolute top-4 right-4">
-                            <Badge variant="secondary">{project.year}</Badge>
-                          </div>
-                        </div>
-                        <div className="p-8">
-                          <h3 className="text-2xl font-bold text-gray-900 mb-4">{project.title}</h3>
-                          <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
+                <div className="flex flex-col h-full">
+                  <div className="relative h-96">
+                    <ProjectImageCarousel images={projects[currentProjectIndex].images} title={projects[currentProjectIndex].title} />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-green-600 text-white">
+                        <Smartphone className="w-3 h-3 mr-1" />
+                        {projects[currentProjectIndex].status}
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <Badge variant="secondary">{projects[currentProjectIndex].year}</Badge>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{projects[currentProjectIndex].title}</h3>
+                    <p className="text-gray-700 mb-6">{projects[currentProjectIndex].description}</p>
 
-                          <div className="mb-6">
-                            <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                              {project.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center text-gray-700">
-                                  <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2"></div>
-                                  {feature}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {projects[currentProjectIndex].features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-gray-700 text-sm">
+                            <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                          <div className="mb-6">
-                            <h4 className="font-semibold text-gray-900 mb-3">Technologies Used:</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {project.technologies.map((tech) => (
-                                <Badge key={tech} variant="outline" className="text-blue-700 border-blue-200">
-                                  {tech}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-
-                          <Button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            View Project Details
-                          </Button>
-                        </div>
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-900 mb-3">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {projects[currentProjectIndex].technologies.map((tech) => (
+                          <Badge key={tech} variant="outline" className="text-blue-700 border-blue-200">
+                            {tech}
+                          </Badge>
+                        ))}
                       </div>
-                    </Card>
-                  </CarouselItem>
+                    </div>
+
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 mb-6" onClick={() => window.open(projects[currentProjectIndex].url, '_blank')}>
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View Project Details
+                    </Button>
+
+                    {/* Navigation Buttons */}
+                    <div className="flex justify-between items-center gap-4">
+                      <Button
+                        variant="outline"
+                        className="flex-1 bg-white hover:bg-gray-50"
+                        onClick={prevProject}
+                      >
+                        <ChevronLeft className="h-4 w-2 mr-1" />
+                        Prev Project
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="flex-1 bg-white hover:bg-gray-50"
+                        onClick={nextProject}
+                      >
+                        Next Project
+                        <ChevronRight className="h-4 w-2 ml-1" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Project Counter */}
+              <div className="flex justify-center mt-4 gap-2">
+                {projects.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentProjectIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300'
+                    }`}
+                  />
                 ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -600,7 +713,7 @@ const Index = () => {
       </section>
 
       {/* Contact Information Section */}
-      <section className="py-20 bg-white">
+      <section id="contact-section" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Information</h2>
@@ -621,7 +734,7 @@ const Index = () => {
               </CardHeader>
               <CardContent className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => window.location.href = `mailto:${contactInfo.email}`}>
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
@@ -631,17 +744,7 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Phone</h3>
-                      <p className="text-gray-600">{contactInfo.phone}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => window.open(contactInfo.whatsappUrl, '_blank')}>
                     <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
@@ -651,27 +754,25 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-white" />
+                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => window.open(contactInfo.instagramUrl, '_blank')}>
+                    <div className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.583.07-4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.849.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849-.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">Location</h3>
-                      <p className="text-gray-600">{contactInfo.location}</p>
+                      <h3 className="font-semibold text-gray-900">Instagram</h3>
+                      <p className="text-gray-600">instagram.com/syamil24</p>
                     </div>
                   </div>
 
-                  <div className="md:col-span-2">
-                    <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg hover:from-pink-100 hover:to-purple-100 transition-colors">
-                      <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.583.07-4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.849.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849-.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Instagram</h3>
-                        <p className="text-gray-600">{contactInfo.instagram}</p>
-                      </div>
+                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => window.open(contactInfo.blog, '_blank')}>
+                    <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                      <BookOpen className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Blog</h3>
+                      <p className="text-gray-600">blog.syamilthoughts.com</p>
                     </div>
                   </div>
                 </div>
@@ -685,7 +786,7 @@ const Index = () => {
                       <Mail className="w-4 h-4 mr-2" />
                       Send Email
                     </Button>
-                    <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-50">
+                    <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-50" onClick={() => window.open("https://wa.link/3s1b4x", '_blank')}>
                       <Phone className="w-4 h-4 mr-2" />
                       WhatsApp Chat
                     </Button>
@@ -702,7 +803,7 @@ const Index = () => {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-4">Let's Work Together</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Ready to bring your next banking or fintech project to life? Let's discuss how we can create something amazing together.
+            Ready to bring your company to the digital era? Let's discuss how we can create something amazing together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
