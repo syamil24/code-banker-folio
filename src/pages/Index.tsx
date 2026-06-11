@@ -288,7 +288,7 @@ const Index = () => {
     }, [emblaApi, onSelect]);
 
     return (
-      <div className="embla relative w-full h-full" ref={emblaRef}>
+      <div className="embla relative w-full h-full overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex h-full">
           {images.map((image, index) => (
             <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
@@ -437,7 +437,7 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <Card className="overflow-hidden border-border/60 bg-card hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
               <div className="grid lg:grid-cols-2">
-                <div className="relative h-72 sm:h-80 lg:h-auto lg:min-h-[32rem] bg-muted/30 border-b lg:border-b-0 lg:border-r border-border/60">
+                <div className="relative min-w-0 overflow-hidden h-72 sm:h-80 lg:h-auto lg:min-h-[32rem] bg-muted/30 border-b lg:border-b-0 lg:border-r border-border/60">
                   <ProjectImageCarousel
                     images={projects[currentProjectIndex].images}
                     title={projects[currentProjectIndex].title}
@@ -454,7 +454,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="p-6 lg:p-8 flex flex-col">
+                <div className="relative z-10 min-w-0 p-6 lg:p-8 flex flex-col bg-card">
                   <div className="mb-6">
                     <p className="text-sm font-medium text-primary mb-1">{projects[currentProjectIndex].subtitle}</p>
                     <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
