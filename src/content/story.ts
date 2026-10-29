@@ -13,76 +13,12 @@ export type Chapter = {
 export const storyMeta = {
   title: "The one left with the room",
   standfirst:
-    "From a religious school in the SPM years to a house key in Kuala Lumpur, this is how I got here. It takes about ten minutes. After that, you can decide for yourself who I am.",
+    "From a first year at Petronas to a house key in Kuala Lumpur, this is the work, and the life beside it. Read it, then decide for yourself who I am.",
   place: "Kuala Lumpur",
   written: "2026",
 };
 
 export const chapters: Chapter[] = [
-  {
-    id: "school",
-    label: "The school",
-    when: "2014 — 2015",
-    where: "SMKA Sheikh Haji Mohd Said",
-    blocks: [
-      {
-        type: "p",
-        text: "I did not grow up announcing what I would become. I grew up being handed a room and told, without much ceremony, to look after it.",
-      },
-      {
-        type: "p",
-        text: "At SMKA Sheikh Haji Mohd Said, in the years that closed with SPM, I was class monitor, and head of the cleanliness prefects. Small titles. They do not survive the way grades do. What they leave is a feeling in the body. You arrive before the room is ready. You notice what is out of place. You do not get to leave the mess for someone with a bigger name. I sat SPM and came out with ten A's and a B. People remember the letters. I remember the habit under them. If a thing was in my care, I stayed until it could be walked into without an apology.",
-      },
-      {
-        type: "p",
-        text: "It was a religious school, and I am not going to make a speech of that. A day there had a shape, and you could be asked to answer for the shape of it. Somebody has to be the one who stays.",
-      },
-    ],
-  },
-  {
-    id: "dengkil",
-    label: "Dengkil",
-    when: "2016 — 2017",
-    where: "UiTM Dengkil",
-    blocks: [
-      {
-        type: "p",
-        text: "The next year was not a career. Foundation in Science at UiTM Dengkil, a GPA of 3.45, a corridor between school and a degree. I was learning to hold a result up to the light, and not to trust it until it survived being asked whether I was sure.",
-      },
-      {
-        type: "p",
-        text: "Dengkil was hot and ordinary, and I did not skip it. So much of the life I have now was built that way, by staying through the year that does not photograph well. I was not yet a programmer, not yet a husband, not yet a man with a key. Only a student, beginning to suspect that the truth of a thing is rarely the first number you are shown.",
-      },
-    ],
-  },
-  {
-    id: "jasin",
-    label: "Jasin",
-    when: "2017 — 2021",
-    where: "UiTM Jasin, Melaka",
-    blocks: [
-      {
-        type: "p",
-        text: "Then Melaka. Universiti Teknologi MARA, Kampus Jasin, a degree in computer science, finished at 3.59. The number is what a form can hold. The years were stranger than a number.",
-      },
-      {
-        type: "p",
-        text: "There was ROTU, the Reserve Officer Training Unit. Mornings whose point was not my comfort. The shape of an order. A group that moves only as fast as the person who refuses to make everyone else late. I did not sign up for a story. I went, and I stayed, and responsibility became a cost you pay before anyone thinks to thank you.",
-      },
-      {
-        type: "p",
-        text: "In another room on that campus I was trying to be useful to something that could not praise me. My final year was a smart irrigation system on a Raspberry Pi: sensors in the soil, a little computer deciding the hour to let the water through. We took it to the i-JAMCSIIX competition and came home with silver.",
-      },
-      {
-        type: "quote",
-        text: "The plant did not care about the medal. It cared whether the water arrived when the soil was thirsty, and not when I felt like proving I had built something.",
-      },
-      {
-        type: "p",
-        text: "I have been trying to live up to that plant ever since. Listen first. Act at the hour that matters. Do not confuse the ceremony with the work.",
-      },
-    ],
-  },
   {
     id: "petronas",
     label: "Petronas",
@@ -91,7 +27,7 @@ export const chapters: Chapter[] = [
     blocks: [
       {
         type: "p",
-        text: "The campus ended, and Kuala Lumpur began, through a door with an unglamorous name. GEES, the Protege programme, at Petronas. If you want the moment I became an engineer in a blaze of diagrams, I do not have it. I would rather give you the year as it was.",
+        text: "I was handed a room and told, without much ceremony, to look after it. The room was full of servers, and the door had an unglamorous name: GEES, the Protege programme, at Petronas. If you want the moment I became an engineer in a blaze of diagrams, I do not have it. I would rather give you the year as it was.",
       },
       {
         type: "p",
@@ -99,7 +35,7 @@ export const chapters: Chapter[] = [
       },
       {
         type: "p",
-        text: "It was the cleanliness prefects again, on a different floor. I left that year with a sentence I still believe. Institutions are made of people who are tired. The useful person is the one who shortens the distance between a question and an answer, and who does not need to be the story.",
+        text: "I left that year with a sentence I still believe. Institutions are made of people who are tired. The useful person is the one who shortens the distance between a question and an answer, and who does not need to be the story.",
       },
     ],
   },
@@ -159,7 +95,7 @@ export const chapters: Chapter[] = [
       },
       {
         type: "p",
-        text: "Nobody was grading me anymore, and I kept studying anyway. That is the old pattern. When I do not yet know how to hold the room, I go and learn the holding. I also learned, late, that a design which lives only in my head is a bad one. It looks finished until another person puts a finger on the crack. The room was never meant to be carried alone.",
+        text: "I kept studying after the work had already started, in years when nobody was required to teach me. When I do not yet know how to hold the room, I go and learn the holding. I also learned, late, that a design which lives only in my head is a bad one. It looks finished until another person puts a finger on the crack. The room was never meant to be carried alone.",
       },
     ],
   },
@@ -243,11 +179,11 @@ export const chapters: Chapter[] = [
       },
       {
         type: "p",
-        text: "Lately the climate has frightened me, and {{I said so|https://blog.syamilthoughts.com/posts/the-end-of-IT-golden-era/}}, because silence was worse. For years the work was a quiet privilege: a laptop, a person eating alone, already filed in everyone's head as the IT guy. A meme, and a shelter. The shelter is thinning. The surface of software is easier to produce now than the life underneath it, and the crowd at the door is larger than anything I imagined as a student.",
+        text: "Lately the climate has frightened me, and {{I said so|https://blog.syamilthoughts.com/posts/the-end-of-IT-golden-era/}}, because silence was worse. For years the work was a quiet privilege: a laptop, a person eating alone, already filed in everyone's head as the IT guy. A meme, and a shelter. The shelter is thinning. The surface of software is easier to produce now than the life underneath it, and the crowd at the door is larger than it used to be.",
       },
       {
         type: "p",
-        text: "I feel two things, and I will not tidy them into one. I am scared. Under the fear there is a small relief in admitting that a cycle turns, and that being earnest will not stop it. I hope the bleak version is wrong. If it is not, I know what I am willing to bet on. Anyone can assemble something that looks finished. Fewer people can tell you what happens when it breaks. The plant still does not care about the slides. A customer still cares whether the money moved. My wife still cares whether the roof holds. The market can rename the job. It cannot rename the duty.",
+        text: "I feel two things, and I will not tidy them into one. I am scared. Under the fear there is a small relief in admitting that a cycle turns, and that being earnest will not stop it. I hope the bleak version is wrong. If it is not, I know what I am willing to bet on. Anyone can assemble something that looks finished. Fewer people can tell you what happens when it breaks. A customer still cares whether the money moved. My wife still cares whether the roof holds. The market can rename the job. It cannot rename the duty.",
       },
       {
         type: "p",
@@ -263,7 +199,7 @@ export const chapters: Chapter[] = [
     blocks: [
       {
         type: "p",
-        text: "I watched a classroom before I watched a server. I argued with a plant and took a medal home. I learned the sound of a system about to fail. I spent half a year on signatures so my wife and I could live near our people, and after hours I built a door for a shop and a studio that needed one of their own.",
+        text: "I learned the names of servers before I learned the sound of a system about to fail. I spent half a year on signatures so my wife and I could live near our people, and after hours I built a door for a shop and a studio that needed one of their own.",
       },
       {
         type: "p",
