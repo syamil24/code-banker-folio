@@ -122,7 +122,7 @@ const Index = () => {
         </ol>
       </nav>
 
-      <main id="top" className="mx-auto max-w-[40rem] px-6 pb-28 pt-28">
+      <main id="top" className="mx-auto max-w-3xl px-6 pb-28 pt-28">
         <p className="font-sans text-[0.72rem] tracking-[0.22em] uppercase text-[hsl(6_32%_38%)]">
           A personal record · {storyMeta.place} · {storyMeta.written}
         </p>
